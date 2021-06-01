@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { makeStyles, Typography, Button } from '@material-ui/core';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,7 +8,9 @@ import MessageIcon from '@material-ui/icons/ModeCommentOutlined';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
+
 import { ModalBlock } from '../components/ModalBlock';
+import BgTwitter from '../assets/img/welcomePage/lohp_en_1302x955.png';
 
 export const useStylesSignIn = makeStyles((theme) => ({
   wrapper: {
@@ -18,7 +21,8 @@ export const useStylesSignIn = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#71C9F8',
+    backgroundImage: `url(${BgTwitter})`,
+    objectFit: 'cover',
     flex: '0 0 50%',
     overflow: 'hidden',
     position: 'relative',
@@ -28,50 +32,39 @@ export const useStylesSignIn = makeStyles((theme) => ({
     left: '50%',
     top: '53%',
     transform: 'translate(-50%, -50%)',
-    width: '350%',
-    height: '350%',
-  },
-  blueSideListInfo: {
-    position: 'relative',
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-    width: 380,
-    '& h6': {
-      display: 'flex',
-      alignItems: 'center',
-      color: 'white',
-      fontWeight: 700,
-      fontSize: 20,
-    },
-  },
-  blueSideListInfoItem: {
-    marginBottom: 40,
-  },
-  blueSideListInfoIcon: {
-    fontSize: 32,
-    marginRight: 15,
+    width: '50%',
+    height: '50%',
+    color: 'white',
   },
   loginSide: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+
     flex: '0 0 50%',
   },
   loginSideTwitterIcon: {
     fontSize: 45,
   },
   loginSideWrapper: {
-    width: 380,
+    padding: 40,
+    maxWidth: 480,
   },
   loginSideTitle: {
     fontWeight: 700,
-    fontSize: 32,
+    fontSize: 64,
     marginBottom: 60,
     marginTop: 20,
   },
+  loginSubTitle: {
+    fontSize: 32,
+    marginBottom: theme.spacing(4),
+  },
   loginSideField: {
+    maxWidth: 480,
     marginBottom: 18,
+  },
+  loginButtons: {
+    maxWidth: 380,
   },
   registerField: {
     marginBottom: theme.spacing(5),
@@ -81,7 +74,7 @@ export const useStylesSignIn = makeStyles((theme) => ({
   },
 }));
 
-function SignIn() {
+export const SignIn = (): React.ReactElement =>{
   const classes = useStylesSignIn();
   const [visibleModal, setVisibleModal] = React.useState<'signIn' | 'signUp'>();
 
@@ -101,54 +94,53 @@ function SignIn() {
     <div className={classes.wrapper}>
       <section className={classes.blueSide}>
         <TwitterIcon color="primary" className={classes.blueSideBigIcon} />
-        <ul className={classes.blueSideListInfo}>
-          <li className={classes.blueSideListInfoItem}>
-            <Typography variant="h6">
-              <SearchIcon className={classes.blueSideListInfoIcon} />
-              Читайте о том, что вам интересно.
-            </Typography>
-          </li>
-          <li className={classes.blueSideListInfoItem}>
-            <Typography variant="h6">
-              <PeopleIcon className={classes.blueSideListInfoIcon} />
-              Узнайте, о чем говорят в мире.
-            </Typography>
-          </li>
-          <li className={classes.blueSideListInfoItem}>
-            <Typography variant="h6">
-              <MessageIcon className={classes.blueSideListInfoIcon} />
-              Присоединяйтесь к общению.
-            </Typography>
-          </li>
-        </ul>
       </section>
       <section className={classes.loginSide}>
         <div className={classes.loginSideWrapper}>
-          <TwitterIcon color="primary" className={classes.loginSideTwitterIcon} />
-          <Typography className={classes.loginSideTitle} gutterBottom variant="h4">
-            Узнайте, что происходит в мире прямо сейчас
-          </Typography>
-          <Typography>
-            <b>Присоединяйтесь к Твиттеру прямо сейчас!</b>
-          </Typography>
-          <br />
-          <Button
-            onClick={handleClickOpenSignUp}
-            style={{ marginBottom: 20 }}
-            variant="contained"
+          <TwitterIcon
             color="primary"
-            fullWidth>
-            Зарегистрироваться
-          </Button>
-          <Button onClick={handleClickOpenSignIn} variant="outlined" color="primary" fullWidth>
-            Войти
-          </Button>
+            className={classes.loginSideTwitterIcon}
+          />
+          <Typography
+            className={classes.loginSideTitle}
+            gutterBottom
+            variant="h4">
+            Happening now
+          </Typography>
+          <Typography
+            className={classes.loginSubTitle}
+            gutterBottom
+            variant="h1">
+            <b>Join Twitter today.</b>
+          </Typography>
+
+          <div className={classes.loginButtons}>
+            <Button
+              onClick={handleClickOpenSignUp}
+              style={{ marginBottom: 20 }}
+              variant="contained"
+              color="primary"
+              fullWidth>
+              Sign up
+            </Button>
+            <Button
+              onClick={handleClickOpenSignIn}
+              variant="outlined"
+              color="primary"
+              fullWidth>
+              Log in
+            </Button>
+          </div>
+
           <ModalBlock
             visible={visibleModal === 'signIn'}
             onClose={handleCloseModal}
             classes={classes}
             title="Войти в аккаунт">
-            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+            <FormControl
+              className={classes.loginFormControl}
+              component="fieldset"
+              fullWidth>
               <FormGroup aria-label="position" row>
                 <TextField
                   className={classes.loginSideField}
@@ -174,18 +166,26 @@ function SignIn() {
                   type="password"
                   fullWidth
                 />
-                <Button onClick={handleCloseModal} variant="contained" color="primary" fullWidth>
+                <Button
+                  onClick={handleCloseModal}
+                  variant="contained"
+                  color="primary"
+                  fullWidth>
                   Войти
                 </Button>
               </FormGroup>
             </FormControl>
           </ModalBlock>
+
           <ModalBlock
             visible={visibleModal === 'signUp'}
             onClose={handleCloseModal}
             classes={classes}
             title="Создайте учетную запись">
-            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+            <FormControl
+              className={classes.loginFormControl}
+              component="fieldset"
+              fullWidth>
               <FormGroup aria-label="position" row>
                 <TextField
                   className={classes.registerField}
@@ -235,4 +235,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+
