@@ -14,6 +14,9 @@ export const theme = createMuiTheme({
       'Helvetica Neue',
       'sans-serif',
     ].join(','),
+    h6:{
+      fontWeight: 700
+    }
   },
   palette: {
     primary: {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, ReactElement } from 'react';
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
@@ -6,7 +6,7 @@ import MessageIcon from '@material-ui/icons/MailOutlineOutlined';
 import BookMark from '@material-ui/icons/TurnedInNotOutlined';
 import SubjectIcon from '@material-ui/icons/Subject';
 import PersonIcon from '@material-ui/icons/PersonOutline';
-import { makeStyles } from '@material-ui/core';
+import { Button, ButtonBase, makeStyles } from '@material-ui/core';
 import { IconButton, Typography } from '@material-ui/core';
 
 import Color from 'color';
@@ -23,14 +23,18 @@ export const useStylesSideMenu = makeStyles((theme) => ({
   },
 
   customIconButton: {
+    padding: 10,
     overflow: 'hidden',
     borderRadius: 25,
     color: '#000',
+    marginBottom: theme.spacing(1),
+    transition: '.1s',
   },
 
   customIcons: {
     height: 24,
     width: 24,
+    fontSize: 24,
   },
   sideMenuList: {
     listStyle: 'none',
@@ -40,9 +44,13 @@ export const useStylesSideMenu = makeStyles((theme) => ({
   sideMenuListItemLabel: {
     paddingLeft: 15,
   },
+  buttonTweet:{
+    marginTop: theme.spacing(2)
+  },
+  tweetContent:{}
 }));
 
-export const SideMenu = () => {
+export const SideMenu: FC = () => {
   const classes = useStylesSideMenu();
   return (
     <div>
@@ -53,54 +61,58 @@ export const SideMenu = () => {
           </IconButton>
         </li>
         <li className={classes.sideMenuListItem}>
-          <IconButton className={classes.customIconButton}>
+          <ButtonBase className={classes.customIconButton}>
             <i className={classes.customIcons}>#</i>
             <Typography className={classes.sideMenuListItemLabel} variant="h6">
               Поиск
             </Typography>
-          </IconButton>
+          </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
-          <IconButton className={classes.customIconButton} color="primary">
+          <ButtonBase className={classes.customIconButton} color="primary">
             <NotificationsNoneIcon className={classes.customIcons} />
             <Typography className={classes.sideMenuListItemLabel} variant="h6">
               Уведомления
             </Typography>
-          </IconButton>
+          </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
-          <IconButton className={classes.customIconButton} color="primary">
+          <ButtonBase className={classes.customIconButton} color="primary">
             <MessageIcon className={classes.customIcons} />
             <Typography className={classes.sideMenuListItemLabel} variant="h6">
               Сообщения
             </Typography>
-          </IconButton>
+          </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
-          <IconButton className={classes.customIconButton} color="primary">
+          <ButtonBase className={classes.customIconButton} color="primary">
             <BookMark className={classes.customIcons} />
             <Typography className={classes.sideMenuListItemLabel} variant="h6">
               Закладки
             </Typography>
-          </IconButton>
+          </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
-          <IconButton className={classes.customIconButton} color="primary">
+          <ButtonBase className={classes.customIconButton} color="primary">
             <SubjectIcon className={classes.customIcons} />
             <Typography className={classes.sideMenuListItemLabel} variant="h6">
               Список
             </Typography>
-          </IconButton>
+          </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
-          <IconButton className={classes.customIconButton} color="primary">
+          <ButtonBase className={classes.customIconButton} color="primary">
             <PersonIcon className={classes.customIcons} />
             <Typography className={classes.sideMenuListItemLabel} variant="h6">
               Профиль
             </Typography>
-          </IconButton>
+          </ButtonBase>
         </li>
-        <li></li>
+        <li>
+          <Button className={classes.buttonTweet} variant="contained"  color="primary" fullWidth>
+            Tweet
+          </Button>
+        </li>
       </ul>
     </div>
   );
