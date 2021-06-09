@@ -3,12 +3,15 @@ import React from 'react';
 
 import { SearchTextField } from '../components/SearchTextField';
 import { SideMenu } from '../components/SideMenu';
+import { Trends } from '../components/Trends';
 import { Tweet } from '../components/Tweet';
-
 
 export const useStylesHome = makeStyles((theme) => ({
   wrapper: {
     height: '100%',
+  },
+  rightSideBlock: {
+    paddingRight: 60
   },
 }));
 
@@ -19,9 +22,9 @@ export const Home = () => {
     <Container maxWidth="lg">
       <Grid className={classes.wrapper} container spacing={3}>
         <Hidden xsDown>
-        <Grid item md={1} lg={2}>
-          <SideMenu />
-        </Grid>
+          <Grid item md={1} lg={2}>
+            <SideMenu />
+          </Grid>
         </Hidden>
         <Grid item sm={10} md={7} lg={6}>
           <Tweet
@@ -35,9 +38,12 @@ export const Home = () => {
           />
         </Grid>
         <Hidden smDown>
-        <Grid item xs={4}>
-          <SearchTextField />
-        </Grid>
+          <Grid item xs={4}>
+            <div className={classes.rightSideBlock}>
+              <SearchTextField />
+              <Trends />
+            </div>
+          </Grid>
         </Hidden>
       </Grid>
     </Container>
