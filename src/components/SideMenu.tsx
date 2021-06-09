@@ -13,6 +13,10 @@ import { IconButton, Typography } from '@material-ui/core';
 import Color from 'color';
 
 export const useStylesSideMenu = makeStyles((theme) => ({
+  wrapper:{
+    position: 'sticky',
+    top: 0
+  },
   logo: { fontSize: 34 },
   sideMenuListItem: {
     '&:hover ': {
@@ -61,7 +65,7 @@ export const useStylesSideMenu = makeStyles((theme) => ({
 export const SideMenu: FC = () => {
   const classes = useStylesSideMenu();
   return (
-    <div>
+    <div className={classes.wrapper}>
       <ul className={classes.sideMenuList}>
         <li className={classes.sideMenuIcon}>
           <IconButton color="primary">

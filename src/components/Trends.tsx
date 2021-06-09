@@ -62,7 +62,7 @@ export const Trends = () => {
         <List>
           <ListItem className={classes.trendsSideBlockItem}>
             <ListItemText
-              primary="Санкт-Петербург"
+              primary="Beer"
               secondary={
                 <Typography
                   component="span"
@@ -76,7 +76,7 @@ export const Trends = () => {
 
           <ListItem className={classes.trendsSideBlockItem}>
             <ListItemText
-              primary="#коронавирус"
+              primary="#React"
               secondary={
                 <Typography
                   component="span"
@@ -90,7 +90,7 @@ export const Trends = () => {
 
           <ListItem className={classes.trendsSideBlockItem}>
             <ListItemText
-              primary="Беларусь"
+              primary="Busich"
               secondary={
                 <Typography
                   component="span"

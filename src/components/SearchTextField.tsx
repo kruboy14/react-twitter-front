@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -32,15 +33,15 @@ const useStyles = makeStyles((theme) =>
 export const SearchTextField = () => {
   const classes = useStyles();
   return (
-    <InputBase
-      classes={{
-        focused: classes.inputFocused,
-        input: classes.inputPlaceholder,
-      }}
-      startAdornment={<SearchIcon className={classes.searchIcon} />}
-      placeholder="Search Twitter"
-      className={classes.root}></InputBase>
+    <>
+      <InputBase
+        classes={{
+          focused: classes.inputFocused,
+          input: classes.inputPlaceholder,
+        }}
+        startAdornment={<SearchIcon className={classes.searchIcon} />}
+        placeholder="Search Twitter"
+        className={classes.root}></InputBase>
+    </>
   );
 };
-
-

@@ -16,18 +16,8 @@ import Color from 'color';
 import classNames from 'classnames';
 
 const useStylesTweet = makeStyles((theme) => ({
-  wrapper: {
-    height: '100%',
-    borderTop: 0,
-    borderBottom: 0,
-  },
-  tweetsHeader: {
-    borderTop: 0,
-    borderRight: 0,
-    borderLeft: 0,
-    padding: '8px 16px',
-    borderBottom: '  12px solid rgba(247, 249, 250);',
-  },
+ 
+  
   tweet: {
     display: 'flex',
     borderRight: 0,
@@ -115,54 +105,49 @@ export const Tweet: FC<TweetProps> = ({
   const classes = useStylesTweet();
 
   return (
-    <Paper className={classes.wrapper} variant="outlined" square>
-      <Paper className={classes.tweetsHeader} variant="outlined" square>
-        <Typography variant="h6">Home </Typography>
-      </Paper>
-      <Paper className={classes.tweet} variant="outlined" square>
-        <Avatar
-          className={classes.avatar}
-          alt={user.fullname}
-          src={user.avatarUrl}
-        />
+    <Paper className={classes.tweet} variant="outlined" square>
+      <Avatar
+        className={classes.avatar}
+        alt={user.fullname}
+        src={user.avatarUrl}
+      />
 
-        <div className={classes.tweetContent}>
-          <Typography>
-            <b>{user.fullname}</b>&nbsp;
-            <span className={classes.tweetUsername}>{user.username}</span>
-            &nbsp;
-            <span className={classes.tweetUsername}>·</span>&nbsp;
-            <span className={classes.tweetUsername}>1 hour</span>
-          </Typography>
-          <Typography variant={'body1'}>{text}</Typography>
-          <div className={classes.buttonsGroup}>
-            <div className={classNames(classes.button, classes.buttonComment)}>
-              <IconButton className={classes.iconComment}>
-                <CommentIcon />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div className={classNames(classes.button, classes.buttonRetweet)}>
-              <IconButton className={classes.iconRetweet}>
-                <RetweetIcon />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div className={classNames(classes.button, classes.buttonLike)}>
-              <IconButton className={classes.iconLike}>
-                <LikeIcon />
-              </IconButton>
-              <span>1</span>
-            </div>
-            <div className={classNames(classes.button, classes.buttonShare)}>
-              <IconButton className={classes.iconShare}>
-                <ShareIcon />
-              </IconButton>
-              <span>1</span>
-            </div>
+      <div className={classes.tweetContent}>
+        <Typography>
+          <b>{user.fullname}</b>&nbsp;
+          <span className={classes.tweetUsername}>{user.username}</span>
+          &nbsp;
+          <span className={classes.tweetUsername}>·</span>&nbsp;
+          <span className={classes.tweetUsername}>1 hour</span>
+        </Typography>
+        <Typography variant={'body1'}>{text}</Typography>
+        <div className={classes.buttonsGroup}>
+          <div className={classNames(classes.button, classes.buttonComment)}>
+            <IconButton className={classes.iconComment}>
+              <CommentIcon />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div className={classNames(classes.button, classes.buttonRetweet)}>
+            <IconButton className={classes.iconRetweet}>
+              <RetweetIcon />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div className={classNames(classes.button, classes.buttonLike)}>
+            <IconButton className={classes.iconLike}>
+              <LikeIcon />
+            </IconButton>
+            <span>1</span>
+          </div>
+          <div className={classNames(classes.button, classes.buttonShare)}>
+            <IconButton className={classes.iconShare}>
+              <ShareIcon />
+            </IconButton>
+            <span>1</span>
           </div>
         </div>
-      </Paper>
+      </div>
     </Paper>
   );
 };
