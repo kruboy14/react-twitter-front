@@ -38,6 +38,12 @@ const useStylesTweet = makeStyles((theme) => ({
       backgroundColor: '#F7F7F7',
     },
   },
+  avatar: {
+    marginTop: 5,
+  },
+  tweetContent: {
+    marginLeft: theme.spacing(1),
+  },
   tweetUsername: {
     color: blueGrey[400],
   },
@@ -114,7 +120,11 @@ export const Tweet: FC<TweetProps> = ({
         <Typography variant="h6">Home </Typography>
       </Paper>
       <Paper className={classes.tweet} variant="outlined" square>
-        <Avatar alt={user.fullname} src={user.avatarUrl} />
+        <Avatar
+          className={classes.avatar}
+          alt={user.fullname}
+          src={user.avatarUrl}
+        />
 
         <div className={classes.tweetContent}>
           <Typography>

@@ -1,9 +1,10 @@
-import { Container, Grid, makeStyles } from '@material-ui/core';
+import { Container, Grid, Hidden, makeStyles } from '@material-ui/core';
 import React from 'react';
 
 import { SearchTextField } from '../components/SearchTextField';
 import { SideMenu } from '../components/SideMenu';
 import { Tweet } from '../components/Tweet';
+
 
 export const useStylesHome = makeStyles((theme) => ({
   wrapper: {
@@ -17,10 +18,12 @@ export const Home = () => {
   return (
     <Container maxWidth="lg">
       <Grid className={classes.wrapper} container spacing={3}>
-        <Grid item xs={2}>
+        <Hidden xsDown>
+        <Grid item md={1} lg={2}>
           <SideMenu />
         </Grid>
-        <Grid item xs={6}>
+        </Hidden>
+        <Grid item sm={10} md={7} lg={6}>
           <Tweet
             user={{
               fullname: 'Artem',
@@ -31,9 +34,11 @@ export const Home = () => {
             text="Numerous websites were unavailable on Tuesday after an apparent widespread at cloud service company Fastly. Dozens of high-traffic websites including the New York Times, CNN, Twitch and the U.K. government’s home page, could not be reached."
           />
         </Grid>
+        <Hidden smDown>
         <Grid item xs={4}>
           <SearchTextField />
         </Grid>
+        </Hidden>
       </Grid>
     </Container>
   );

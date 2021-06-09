@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC } from 'react';
 
 import TwitterIcon from '@material-ui/icons/Twitter';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
@@ -6,7 +6,8 @@ import MessageIcon from '@material-ui/icons/MailOutlineOutlined';
 import BookMark from '@material-ui/icons/TurnedInNotOutlined';
 import SubjectIcon from '@material-ui/icons/Subject';
 import PersonIcon from '@material-ui/icons/PersonOutline';
-import { Button, ButtonBase, makeStyles } from '@material-ui/core';
+import CreateIcon from '@material-ui/icons/Create';
+import { Button, ButtonBase, Hidden, makeStyles } from '@material-ui/core';
 import { IconButton, Typography } from '@material-ui/core';
 
 import Color from 'color';
@@ -19,6 +20,14 @@ export const useStylesSideMenu = makeStyles((theme) => ({
         backgroundColor: Color(theme.palette.primary.main).alpha(0.1).string(),
         color: theme.palette.primary.main,
       },
+    },
+    [theme.breakpoints.down('md')]: {
+      textAlign: 'center',
+    },
+  },
+  sideMenuIcon: {
+    [theme.breakpoints.down('md')]: {
+      textAlign: 'center',
     },
   },
 
@@ -44,10 +53,9 @@ export const useStylesSideMenu = makeStyles((theme) => ({
   sideMenuListItemLabel: {
     paddingLeft: 15,
   },
-  buttonTweet:{
-    marginTop: theme.spacing(2)
+  buttonTweet: {
+    marginTop: theme.spacing(2),
   },
-  tweetContent:{}
 }));
 
 export const SideMenu: FC = () => {
@@ -55,7 +63,7 @@ export const SideMenu: FC = () => {
   return (
     <div>
       <ul className={classes.sideMenuList}>
-        <li>
+        <li className={classes.sideMenuIcon}>
           <IconButton color="primary">
             <TwitterIcon className={classes.logo} />
           </IconButton>
@@ -63,54 +71,85 @@ export const SideMenu: FC = () => {
         <li className={classes.sideMenuListItem}>
           <ButtonBase className={classes.customIconButton}>
             <i className={classes.customIcons}>#</i>
-            <Typography className={classes.sideMenuListItemLabel} variant="h6">
-              Поиск
-            </Typography>
+            <Hidden mdDown>
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6">
+                Поиск
+              </Typography>
+            </Hidden>
           </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
           <ButtonBase className={classes.customIconButton} color="primary">
             <NotificationsNoneIcon className={classes.customIcons} />
-            <Typography className={classes.sideMenuListItemLabel} variant="h6">
-              Уведомления
-            </Typography>
+            <Hidden mdDown>
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6">
+                Уведомления
+              </Typography>
+            </Hidden>
           </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
           <ButtonBase className={classes.customIconButton} color="primary">
             <MessageIcon className={classes.customIcons} />
-            <Typography className={classes.sideMenuListItemLabel} variant="h6">
-              Сообщения
-            </Typography>
+            <Hidden mdDown>
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6">
+                Сообщения
+              </Typography>
+            </Hidden>
           </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
           <ButtonBase className={classes.customIconButton} color="primary">
             <BookMark className={classes.customIcons} />
-            <Typography className={classes.sideMenuListItemLabel} variant="h6">
-              Закладки
-            </Typography>
+            <Hidden mdDown>
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6">
+                Закладки
+              </Typography>
+            </Hidden>
           </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
           <ButtonBase className={classes.customIconButton} color="primary">
             <SubjectIcon className={classes.customIcons} />
-            <Typography className={classes.sideMenuListItemLabel} variant="h6">
-              Список
-            </Typography>
+            <Hidden mdDown>
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6">
+                Список
+              </Typography>
+            </Hidden>
           </ButtonBase>
         </li>
         <li className={classes.sideMenuListItem}>
           <ButtonBase className={classes.customIconButton} color="primary">
             <PersonIcon className={classes.customIcons} />
-            <Typography className={classes.sideMenuListItemLabel} variant="h6">
-              Профиль
-            </Typography>
+            <Hidden mdDown>
+              <Typography
+                className={classes.sideMenuListItemLabel}
+                variant="h6">
+                Профиль
+              </Typography>
+            </Hidden>
           </ButtonBase>
         </li>
         <li>
-          <Button className={classes.buttonTweet} variant="contained"  color="primary" fullWidth>
-            Tweet
+          <Button
+            className={classes.buttonTweet}
+            variant="contained"
+            color="primary"
+            fullWidth>
+            <Hidden mdDown>Твитнуть</Hidden>
+            <Hidden lgUp>
+              <CreateIcon />
+            </Hidden>
           </Button>
         </li>
       </ul>

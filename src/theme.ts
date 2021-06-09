@@ -2,6 +2,8 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import { inherits } from 'util';
 
+
+
 export const theme = createMuiTheme({
   typography: {
     fontFamily: [
@@ -14,10 +16,11 @@ export const theme = createMuiTheme({
       'Helvetica Neue',
       'sans-serif',
     ].join(','),
-    h6:{
-      fontWeight: 700
-    }
+    h6: {
+      fontWeight: 700,
+    },
   },
+ 
   palette: {
     primary: {
       main: 'rgb(29, 161, 242)',
@@ -43,9 +46,7 @@ export const theme = createMuiTheme({
         fontSize: 16,
         height: 45,
         fontWeight: 700,
-        '&:hover': {
-         
-        },
+        '&:hover': {},
       },
       textPrimary: {
         paddingLeft: 20,
