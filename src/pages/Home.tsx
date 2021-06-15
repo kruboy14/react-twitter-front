@@ -9,6 +9,7 @@ import {
 import React from 'react';
 
 import { SearchTextField } from '../components/SearchTextField';
+import { AddTweetForm } from '../components/AddTweetForm';
 import { SideMenu } from '../components/SideMenu';
 import { Trends } from '../components/Trends';
 import { Tweet } from '../components/Tweet';
@@ -53,6 +54,7 @@ export const Home = () => {
           <Paper className={classes.tweetWrapper} variant="outlined" square>
             <Paper className={classes.tweetsHeader} variant="outlined" square>
               <Typography variant="h6">Home </Typography>
+              <AddTweetForm/>
             </Paper>
             <Tweet
               user={{

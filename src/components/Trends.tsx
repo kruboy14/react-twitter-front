@@ -12,7 +12,8 @@ import {
 } from '@material-ui/core';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 
-import React from 'react';
+import React, { ReactElement } from 'react';
+import { FC } from 'react';
 const useTrendsStyles = makeStyles((theme) =>
   createStyles({
     trendsSideBlock: {
@@ -51,7 +52,7 @@ const useTrendsStyles = makeStyles((theme) =>
     },
   }),
 );
-export const Trends = () => {
+export const Trends: FC = (): ReactElement => {
   const classes = useTrendsStyles();
   return (
     <>
